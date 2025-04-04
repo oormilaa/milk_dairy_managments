@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* Add your farmer-themed background image here */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff; /* Brighter text color */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #8dbf42;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff; /* Brighter text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.farmer-form {
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width */
+    box-sizing: border-box;
+}
+
+.farmer-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333333; /* Darker text color for labels */
+}
+
+.farmer-form input,
+.farmer-form select,
+.farmer-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #333333; /* Dark text color for input fields */
+    background-color: #ffffff; /* White background for input fields */
+}
+
+.farmer-form textarea {
+    resize: vertical; /* Allows vertical resizing of the textarea */
+}
+
+.farmer-form button {
+    background-color: #6b8e23;
+    color: #ffffff; /* Brighter text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.farmer-form button:hover {
+    background-color: #4e6b1e;
+}
+
+footer {
+    background-color: #8dbf42;
+    padding: 10px 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.taskbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping if needed */
+}
+
+.taskbar a {
+    color: #ffffff; /* Brighter text color */
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    margin: 0 5px; /* Adjust spacing between items */
+}
+
+.taskbar i {
+    margin-right: 8px; /* Add space between icon and text */
+}
+
+.taskbar a:hover {
+    background-color: #6b8e23;
+    border-radius: 5px;
+}
+.success-message {
+    display: none;
+    position: absolute; /* Position it absolutely relative to the .form-container */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    padding: 10px; /* Adjusted padding */
+    background-color: #58e621;
+    color: #0a2846; /* Dark blue text color */
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    font-size: 13px; /* Reduced font size */
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the success message */
+    z-index: 1000; /* Ensure it appears above other content */
+}

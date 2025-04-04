@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Offering Form</title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Milk Offering Form</h1>
+    </header>
+    <div class="form-container">
+        
+        
+
+        <main>
+            <form id="milkForm" action="process_form.php" method="POST">
+                <table>
+                    <tr>
+                        <th>Farmer Number</th>
+                        <td><input type="text" id="farmerNumber" name="farmerNumber[]" oninput="autoFill()" required></td>
+                    </tr>
+                    <tr>
+                        <th>Farmer Name</th>
+                        <td><input type="text" id="farmerName" name="farmerName[]" required readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Milk Type</th>
+                        <td><input type="text" id="milkType" name="milkType[]" required readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><input type="date" id="date" name="date[]" required></td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td><input type="text" id="time" name="time[]" required readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Number of Liters</th>
+                        <td><input type="number" id="liters" name="liters[]" step="0.01" required oninput="calculateTotal()"></td>
+                    </tr>
+                    <tr>
+                        <th>Fat Content (%)</th>
+                        <td><input type="number" id="fatContent" name="fatContent[]" step="0.01" required oninput="calculateRate()"></td>
+                    </tr>
+                    <tr>
+                        <th>SNF (%)</th>
+                        <td><input type="number" id="snf" name="snf[]" step="0.01" required oninput="calculateRate()"></td>
+                    </tr>
+                    <tr>
+                        <th>Rate per Liter</th>
+                        <td><input type="number" id="rate" name="rate[]" step="0.01" required readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Total Price</th>
+                        <td><input type="text" id="totalPrice" name="totalPrice[]" readonly></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit">
+            </form>
+            <div class="success-message" id="successMessage" style="display: none;">Form submitted successfully!</div>
+        </main>
+    </div>
+
+    <footer>
+        <nav class="taskbar">
+            <a href="portal.html"><i class="fa fa-home"></i> Home</a>
+            <a href="farmerdetails.html"><i class="fa fa-user"></i> Farmer Data</a>
+            <a href="temp.html"><i class="fa fa-list"></i> Farmer Milk Details</a>
+            <a href="#"><i class="fa fa-plus"></i> Milk Offering</a>
+            <a href="personal.html"><i class="fa fa-eye"></i> View Farmer</a>
+        </nav>
+    </footer>
+
+    <script>
+        const farmerData = {
+            '120': { name: 'A. Appa Rao', milkType: 'Cow' },
+            '7': { name: 'B. Rama Rao', milkType: 'Buffalo' },
+            '14': { name: 'A. Annapurna', milkType: 'Cow' },
+            '100': { name: 'B. Dhanu', milkType: 'Buffalo' }
+        };
+
+        function autoFill() {
+            const farmerNumber = document.getElementById('farmerNumber').value.trim();
+            const farmer = farmerData[farmerNumber];
+            if (farmer) {
+                document.getElementById('farmerName').value = farmer.name;
+                document.getElementById('milkType').value = farmer.milkType;
+            } else {
+                document.getElementById('farmerName').value = '';
+                document.getElementById('milkType').value = '';
+            }
+        }
+
+        function calculateRate() {
+            const fatContent = parseFloat(document.getElementById('fatContent').value) || 0;
+            const snf = parseFloat(document.getElementById('snf').value) || 0;
+            const baseRate = 10;
+            const rate = baseRate + (fatContent * 0.5) + (snf * 0.2);
+            document.getElementById('rate').value = rate.toFixed(2);
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const liters = parseFloat(document.getElementById('liters').value) || 0;
+            const rate = parseFloat(document.getElementById('rate').value) || 0;
+            const totalPrice = liters * rate;
+            document.getElementById('totalPrice').value = totalPrice.toFixed(2);
+        }
+
+        function formatTime(hours, minutes) {
+            const period = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return `${hours}:${minutes} ${period}`;
+        }
+
+        document.getElementById('milkForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(this);
+
+            fetch('process_form.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'Success') {
+                    document.getElementById('successMessage').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                        document.getElementById('milkForm').reset();
+                        const now = new Date();
+                        document.getElementById('date').value = now.toISOString().split('T')[0];
+                        document.getElementById('time').value = formatTime(now.getHours(), now.getMinutes());
+                    }, 1500);
+                } else {
+                    console.error('Form submission error:', result);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            document.getElementById('date').value = now.toISOString().split('T')[0];
+            document.getElementById('time').value = formatTime(now.getHours(), now.getMinutes());
+        });
+    </script>
+</body>
+</html>

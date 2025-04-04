@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Data Entry</title>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="farmer.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Enter Farmer's Personal Data</h1>
+        </header>
+
+        <main>
+            <!-- Success message display -->
+            <div id="successMessage" class="success-message" style="display: none;">
+                Data submitted successfully!
+            </div>
+
+            <form id="farmerForm" action="submit_farmer_data.php" method="post" class="farmer-form">
+                <label for="farmerNumber">Farmer Number:</label>
+                <input type="text" id="farmerNumber" name="farmerNumber" required>
+
+                <label for="farmerName">Farmer Name:</label>
+                <input type="text" id="farmerName" name="farmerName" required>
+
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+                <label for="maritalStatus">Marital Status:</label>
+                <select id="maritalStatus" name="maritalStatus" onchange="toggleChildrenFields()" required>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+
+                <label for="numberOfChildren" id="childrenLabel" style="display: none;">Number of Children:</label>
+                <input type="number" id="numberOfChildren" name="numberOfChildren" style="display: none;">
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+
+                <label for="milkType">Milk Type:</label>
+                <select id="milkType" name="milkType" required>
+                    <option value="cow">Cow</option>
+                    <option value="buffalo">Buffalo</option>
+                </select>
+
+                <button type="submit" class="button">Submit Data</button>
+            </form>
+        </main>
+
+        <footer>
+            <nav class="taskbar">
+                <a href="portal.html"><i class="fa fa-home"></i> Home</a>
+                <a href="farmerdetails.html"><i class="fa fa-user"></i> Farmer Data</a>
+                <a href="temp.html"><i class="fa fa-list"></i> Farmer Milk Details</a>
+                <a href="form.html"><i class="fa fa-plus"></i> Milk Offering</a>
+                <a href="personal.html"><i class="fa fa-eye"></i> View Farmer</a>
+            </nav>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('farmerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(this);
+
+            fetch('submit_farmer_data.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'Success') {
+                    document.getElementById('successMessage').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                        document.getElementById('farmerForm').reset();
+                        location.reload(); // Reload the page after showing the success message
+                    }, 1500);
+                } else {
+                    console.error('Form submission error:', result);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function toggleChildrenFields() {
+            var maritalStatus = document.getElementById("maritalStatus").value;
+            var numberOfChildren = document.getElementById("numberOfChildren");
+            var childrenLabel = document.getElementById("childrenLabel");
+
+            if (maritalStatus === "married") {
+                numberOfChildren.style.display = "block";
+                childrenLabel.style.display = "block";
+            } else {
+                numberOfChildren.style.display = "none";
+                childrenLabel.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

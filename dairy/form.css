@@ -1,0 +1,180 @@
+/* General styles for the form container */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* Add your background image here */
+    background-size: cover;
+    background-position: center;
+    color: #000000; /* Dark text color for better visibility */
+    height: 100vh; /* Use full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the form vertically */
+}
+
+.form-container {
+    width: 100%; /* Full width for flexibility */
+    max-width: 400px; /* Slightly reduced max width */
+    margin: auto;
+    padding: 3px; /* Reduced padding */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative; 
+    
+    /* Ensure that the success message is positioned relative to this container */
+}
+
+header {
+    background-color: #8dbf42;
+    padding: 10px; /* Reduced padding */
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    
+}
+
+
+
+
+header h1 {
+    font-size: 30px; /* Reduced font size */
+    color: #ffffff; /* White color for better contrast */
+}
+
+/* Main section styles */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    padding: 10px; /* Reduced padding */
+    margin-bottom: 20px;
+}
+.form-container{
+    height:575px;
+    margin-bottom: 75px;
+    margin-top: 6px;
+    backdrop-filter: blur(10px); /* Blur effect */
+}
+form {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    backdrop-filter: blur(10px);/* Blur effect */
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px; /* Slightly reduced max width */
+    height: auto; /* Adjusted height */
+    box-sizing: border-box;
+    font-size: 14px; /* Reduced font size for the entire form */
+    flex:1;
+    margin-top: 25px;
+}
+
+/* Form table styles */
+form table {
+    width: 100%;
+    height: 50px;
+
+    border-collapse: collapse;
+}
+
+form th, form td {
+    padding: 5px; /* Reduced padding */
+    text-align: left;
+    font-size: 13px; /* Reduced font size */
+}
+
+form th {
+    background-color: #f4f4f4;
+}
+
+/* Form input styles */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="submit"] {
+    width: 100%;
+    padding: 6px; /* Reduced padding */
+    margin: 4px 0; /* Reduced margin */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px; /* Reduced font size */
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; /* Reduced font size */
+    padding: 8px 10px; /* Slightly adjusted padding */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Success message styles */
+.success-message {
+    display: none;
+    position: absolute; /* Position it absolutely relative to the .form-container */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    padding: 10px; /* Adjusted padding */
+    background-color: #dff0d8;
+    color: #004085; /* Dark blue text color */
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    font-size: 13px; /* Reduced font size */
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow to the success message */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Footer styles */
+footer {
+    background-color: #8dbf42;
+    color: #ffffff;
+    padding: 11px 11px; /* Reduced padding */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    font-size: 16px; /* Increased font size */
+}
+
+footer nav.taskbar {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+footer nav.taskbar a {
+    text-decoration: none;
+    color: #333;
+    padding: 6px 6px; /* Reduced padding */
+    font-size: 17px; /* Increased font size */
+    flex-grow: 1;
+    text-align: center;
+}
+
+footer nav.taskbar a:hover {
+    background-color: #ddd;
+    border-radius: 4px;
+}

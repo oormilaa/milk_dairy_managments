@@ -1,0 +1,147 @@
+html, body {
+    height: 100%; /* Ensure the body takes up full height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* Ensure your background image is set here */
+    background-size: cover;
+    background-position: center;
+    color: #000000; /* Dark text color for better visibility */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the container takes up full height */
+}
+
+header {
+    background-color: #8dbf42;
+    padding: 8px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    padding: 20px;
+    margin-left: 0; /* Removed left margin */
+}
+
+.farmer-form {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 400px; /* Center the form horizontally */
+}
+
+.farmer-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.farmer-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+.farmer-form button {
+    background-color: #6b8e23;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.farmer-form button:hover {
+    background-color: #4e6b1e;
+}
+
+.farmer-details {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+.farmer-details table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+.farmer-details table, .farmer-details th, .farmer-details td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: #333333;
+}
+
+.farmer-details th {
+    background-color: #6b8e23;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #8dbf42;
+    color: #ffffff;
+    padding: 11px 11px; /* Reduced padding */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    z-index: 999;
+    font-size: 16px; /* Increased font size */
+}
+
+footer nav.taskbar {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+footer nav.taskbar a {
+    text-decoration: none;
+    color: #333;
+    padding: 6px 8px; /* Reduced padding */
+    font-size: 17px; /* Increased font size */
+    flex-grow: 1;
+    text-align: center;
+}
+
+footer nav.taskbar a:hover {
+    background-color: #ddd;
+    border-radius: 4px;
+}

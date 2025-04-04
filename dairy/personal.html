@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="personal.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>View Farmer Details</h1>
+        </header>
+
+        <main>
+            <form action="personal.php" method="post" class="farmer-form">
+                <label for="farmerNumber">Enter Farmer Number:</label>
+                <input type="text" id="farmerNumber" name="farmerNumber" required>
+                <button type="submit" class="button">Submit</button>
+            </form>
+
+            <div id="farmerDetails" class="farmer-details">
+                <!-- Farmer details will be displayed here after fetching from database -->
+            </div>
+        </main>
+
+        <footer>
+            <nav class="taskbar">
+                <a href="portal.html"><i class="fa fa-home"></i> Home</a>
+                <a href="farmerdetails.html"><i class="fa fa-user"></i> Farmer Data</a>
+                <a href="temp.html"><i class="fa fa-list"></i> Farmer Milk Details</a>
+                <a href="form.html"><i class="fa fa-plus"></i> Milk Offering</a>
+                <a href="#"><i class="fa fa-eye"></i> View Farmer</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>

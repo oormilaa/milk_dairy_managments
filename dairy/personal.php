@@ -10,7 +10,7 @@
 <body>
     <div class="form-container">
         <header>
-            <h1>View Farmer Data</h1>
+            <h1>View Farmers Data</h1>
         </header>
 
         <main>
